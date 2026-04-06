@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Churn Analysis | Rachel Okoduwa</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet'>
+  <style>
+    body { font-family: 'Roboto', sans-serif; color: #333; background: #fff; }
+    .blog-header { background: #f8f8f8; padding: 60px 0 40px 0; text-align: center; border-bottom: 1px solid #eee; }
+    .blog-header h1 { font-family: 'Roboto Slab', serif; font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; }
+    .blog-header .meta { color: #888; font-size: 14px; }
+    .blog-content { max-width: 800px; margin: 60px auto; padding: 0 20px; line-height: 1.9; font-size: 16px; color: #444; }
+    .blog-content h2 { font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 700; margin-top: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .blog-content p { margin-bottom: 20px; }
+    .blog-content ul { margin-bottom: 20px; padding-left: 20px; }
+    .blog-content ul li { margin-bottom: 10px; }
+    .tools-used { background: #f8f8f8; padding: 20px 25px; margin: 30px 0; border-left: 4px solid #333; }
+    .tools-used p { margin: 0; font-size: 14px; }
+    .stat-box { background: #f8f8f8; padding: 20px 25px; margin: 15px 0; border-left: 4px solid #333; }
+    .stat-box p { margin: 0; font-size: 15px; }
+    .github-btn { display: inline-block; margin-top: 10px; padding: 14px 30px; background-color: #333333; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .github-btn:hover { background-color: #555; color: #fff; text-decoration: none; }
+    .back-link { display: inline-block; margin-bottom: 40px; font-size: 13px; color: #888; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; }
+    .back-link:hover { color: #333; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 40px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-header">
+    <div class="container">
+      <p class="meta">11/04/2024 &nbsp;&bull;&nbsp; SQL &nbsp;&bull;&nbsp; PostgreSQL &nbsp;&bull;&nbsp; Customer Analytics</p>
+      <h1>Customer Churn Analysis</h1>
+      <p class="meta">What patterns lead to customer churn in a subscription-based service?</p>
+    </div>
+  </div>
+
+  <div class="blog-content">
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
+
+    <p>
+      Customer churn is one of the most expensive problems a subscription business can face. Acquiring a new customer costs significantly more than retaining an existing one, so understanding why people leave is just as important as understanding why they sign up. This project used the Telco Customer Churn dataset from Kaggle to find the patterns behind churn by looking at customer demographics, subscription details, and usage behaviour.
+    </p>
+
+    <h2>The Data</h2>
+    <p>
+      The analysis was done in PostgreSQL using pgAdmin 4. To demonstrate advanced SQL skills, I reviewed the dataset in Excel and split it into two tables: a Customers table and a Subscriptions table. This allowed me to showcase SQL joins and more complex querying techniques rather than just working with a flat file.
+    </p>
+    <p>
+      One issue I ran into during the data import was that the TotalCharges column contained empty strings which caused an import error. I cleaned those rows in Excel before importing which was a good reminder that data cleaning is always part of the job.
+    </p>
+
+    <div class="tools-used">
+      <p><strong>Tools used:</strong> SQL, PostgreSQL, pgAdmin 4, Excel</p>
+    </div>
+
+    <h2>Key Findings</h2>
+
+    <p><strong>1. Churn by Contract Type</strong></p>
+    <p>
+      Contract type was the strongest predictor of churn. The numbers were striking:
+    </p>
+    <ul>
+      <li>Month-to-month contracts: <strong>42% churn rate</strong></li>
+      <li>One-year contracts: <strong>11% churn rate</strong></li>
+      <li>Two-year contracts: <strong>2% churn rate</strong></li>
+    </ul>
+    <p>
+      Customers on flexible month-to-month terms are at far higher risk. The longer the commitment, the stronger the retention.
+    </p>
+
+    <p><strong>2. Churn by Internet Service Type</strong></p>
+    <p>
+      Internet service type also showed a clear pattern:
+    </p>
+    <ul>
+      <li>Fiber optic: <strong>41% churn rate</strong></li>
+      <li>DSL: <strong>18% churn rate</strong></li>
+      <li>No internet service: <strong>7% churn rate</strong></li>
+    </ul>
+    <p>
+      Fiber optic customers churning at nearly the same rate as month-to-month customers suggests there may be a service quality or pricing issue worth investigating.
+    </p>
+
+    <p><strong>3. Monthly Charges and Churn</strong></p>
+    <p>
+      Customers who churned had a noticeably higher average monthly charge at $74.44 compared to $61.27 for customers who stayed. Higher charges correlate with higher churn, suggesting pricing sensitivity is a real factor in the decision to leave.
+    </p>
+
+    <p><strong>4. Retention by Tenure</strong></p>
+    <p>
+      The first year is the most critical period for retention:
+    </p>
+    <ul>
+      <li>1 to 12 months: <strong>52.32% retention</strong></li>
+      <li>13 to 24 months: <strong>71.29% retention</strong></li>
+      <li>60+ months: <strong>93.44% retention</strong></li>
+    </ul>
+    <p>
+      If a customer makes it past the first year, the likelihood of keeping them grows dramatically. The first 12 months are where the battle is won or lost.
+    </p>
+
+    <p><strong>5. Senior Citizen Retention</strong></p>
+    <p>
+      Senior customers showed lower retention rates across most tenure buckets, especially within the first 12 months. This points to a need for more targeted onboarding and support for this specific demographic.
+    </p>
+
+    <h2>Recommendations</h2>
+    <ul>
+      <li>Focus retention efforts on the first 12 months with better onboarding and personalized engagement</li>
+      <li>Offer incentives for month-to-month customers to switch to longer-term contracts</li>
+      <li>Investigate fiber optic service quality or pricing, given its unusually high churn rate</li>
+      <li>Consider tiered pricing or added benefits for high-paying customers who are most sensitive to charges</li>
+      <li>Build dedicated support programs for senior customers during their first year</li>
+    </ul>
+
+    <hr class="divider">
+
+    <a href="https://github.com/rachelokoduwa/Churn_analysis"
+       class="github-btn" target="_blank">
+      View on GitHub
+    </a>
+
+  </div>
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
