@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Superstore Dashboard | Rachel Okoduwa</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet'>
+  <style>
+    body { font-family: 'Roboto', sans-serif; color: #333; background: #fff; }
+    .blog-header { background: #f8f8f8; padding: 60px 0 40px 0; text-align: center; border-bottom: 1px solid #eee; }
+    .blog-header h1 { font-family: 'Roboto Slab', serif; font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; }
+    .blog-header .meta { color: #888; font-size: 14px; }
+    .blog-content { max-width: 800px; margin: 60px auto; padding: 0 20px; line-height: 1.9; font-size: 16px; color: #444; }
+    .blog-content h2 { font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 700; margin-top: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .blog-content p { margin-bottom: 20px; }
+    .blog-content ul { margin-bottom: 20px; padding-left: 20px; }
+    .blog-content ul li { margin-bottom: 10px; }
+    .tools-used { background: #f8f8f8; padding: 20px 25px; margin: 30px 0; border-left: 4px solid #333; }
+    .tools-used p { margin: 0; font-size: 14px; }
+    .github-btn { display: inline-block; margin-top: 10px; padding: 14px 30px; background-color: #333333; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .github-btn:hover { background-color: #555; color: #fff; text-decoration: none; }
+    .back-link { display: inline-block; margin-bottom: 40px; font-size: 13px; color: #888; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; }
+    .back-link:hover { color: #333; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 40px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-header">
+    <div class="container">
+      <p class="meta">08/24/2024 &nbsp;&bull;&nbsp; Tableau &nbsp;&bull;&nbsp; Sales Analytics</p>
+      <h1>Superstore Dashboard</h1>
+      <p class="meta">Where is this store making money and where is it losing it?</p>
+    </div>
+  </div>
+
+  <div class="blog-content">
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
+
+    <p>
+      The Superstore dataset is one of the most well known practice datasets in the data analytics world and for good reason. It is rich, realistic, and forces you to think across multiple dimensions at once: geography, time, product category, and customer behaviour. My goal with this project was to build a dashboard that could answer real business questions about where the store was making money and where it was not.
+    </p>
+
+    <h2>The Goal</h2>
+    <p>
+      Sales and profit do not always move together. A product can have high sales volume but low or even negative profit margins. A state can look busy on a sales map but be dragging down overall profitability. This dashboard was built to surface those kinds of tensions and give decision makers a clear picture across multiple years of data.
+    </p>
+
+    <div class="tools-used">
+      <p><strong>Tools used:</strong> Tableau, Data Visualization, Sales Analysis</p>
+      <p style="margin-top: 8px;"><strong>Data source:</strong> Superstore dataset (available on Tableau and Kaggle)</p>
+    </div>
+
+    <h2>What the Dashboard Shows</h2>
+    <ul>
+      <li><strong>Sales and profit by state</strong> — a geographic view showing which states are the strongest and weakest performers across the US</li>
+      <li><strong>Performance by product category</strong> — breaking down Technology, Furniture, and Office Supplies to show which categories drive the most revenue and profit</li>
+      <li><strong>Year over year trends</strong> — tracking how sales and profit have changed over multiple years to identify growth patterns and problem periods</li>
+      <li><strong>Customer analysis</strong> — looking at which customer segments are most valuable and how buying behaviour differs across segments</li>
+      <li><strong>Profit by product</strong> — drilling down to individual products to find the hidden winners and the items that are actually hurting the bottom line</li>
+    </ul>
+
+    <h2>What I Found Interesting</h2>
+    <p>
+      One of the more interesting things about this dataset is that some products with strong sales numbers actually have negative profit margins. Furniture in particular tends to be a category where high revenue masks poor profitability. Building a dashboard that separates sales from profit makes that story visible in a way that a simple revenue report would completely miss.
+    </p>
+
+    <p>
+      This project was a good exercise in building dashboards that are genuinely useful rather than just visually impressive. The goal was always to make the important information easy to find quickly.
+    </p>
+
+    <hr class="divider">
+
+    <a href="https://public.tableau.com/app/profile/rachel.okoduwa/viz/SuperstoreDasboard_17242672157230/StoreDashboard"
+       class="github-btn" target="_blank">
+      View Dashboard on Tableau Public
+    </a>
+
+  </div>
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
