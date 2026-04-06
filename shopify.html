@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shopify Internship Challenge | Rachel Okoduwa</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet'>
+  <style>
+    body { font-family: 'Roboto', sans-serif; color: #333; background: #fff; }
+    .blog-header { background: #f8f8f8; padding: 60px 0 40px 0; text-align: center; border-bottom: 1px solid #eee; }
+    .blog-header h1 { font-family: 'Roboto Slab', serif; font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; }
+    .blog-header .meta { color: #888; font-size: 14px; }
+    .blog-content { max-width: 800px; margin: 60px auto; padding: 0 20px; line-height: 1.9; font-size: 16px; color: #444; }
+    .blog-content h2 { font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 700; margin-top: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .blog-content h3 { font-family: 'Roboto Slab', serif; font-size: 18px; font-weight: 700; margin-top: 30px; margin-bottom: 15px; }
+    .blog-content p { margin-bottom: 20px; }
+    .blog-content ul { margin-bottom: 20px; padding-left: 20px; }
+    .blog-content ul li { margin-bottom: 10px; }
+    .tools-used { background: #f8f8f8; padding: 20px 25px; margin: 30px 0; border-left: 4px solid #333; }
+    .tools-used p { margin: 0; font-size: 14px; }
+    .code-block { background: #f4f4f4; padding: 15px 20px; margin: 20px 0; font-family: monospace; font-size: 14px; border-left: 4px solid #333; overflow-x: auto; }
+    .answer-box { background: #f8f8f8; padding: 20px 25px; margin: 20px 0; border-left: 4px solid #333; }
+    .answer-box p { margin: 0; font-size: 15px; }
+    .github-btn { display: inline-block; margin-top: 10px; padding: 14px 30px; background-color: #333333; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .github-btn:hover { background-color: #555; color: #fff; text-decoration: none; }
+    .back-link { display: inline-block; margin-bottom: 40px; font-size: 13px; color: #888; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; }
+    .back-link:hover { color: #333; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 40px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-header">
+    <div class="container">
+      <p class="meta">05/22/2022 &nbsp;&bull;&nbsp; Python &nbsp;&bull;&nbsp; SQL &nbsp;&bull;&nbsp; Data Science Challenge</p>
+      <h1>Shopify Data Science Intern Challenge</h1>
+      <p class="meta">Fall 2022 — Answering real analytical questions with Python and SQL</p>
+    </div>
+  </div>
+
+  <div class="blog-content">
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
+
+    <p>
+      This project is my submission to the Shopify Data Science Intern Challenge for Fall 2022. The challenge was split into two parts. The first used Python to investigate a statistical problem with average order value calculations. The second used SQL to answer specific business questions about a retail dataset. It was a good test of both analytical thinking and technical execution.
+    </p>
+
+    <div class="tools-used">
+      <p><strong>Tools used:</strong> Python (Pandas, Matplotlib, Seaborn), SQL, Statistical Analysis</p>
+    </div>
+
+    <h2>Part 1: The Average Order Value Problem</h2>
+
+    <p>
+      Shopify provided data from 100 sneaker shops, each selling one model of shoe. The naive calculation of average order value (AOV) came out to $3,145.13. Given that these are sneaker shops selling a relatively affordable product, something was clearly off. The challenge was to figure out what was wrong and suggest a better metric.
+    </p>
+
+    <h3>What Was Going Wrong</h3>
+    <p>
+      After exploring the data in Python, I found two things that were skewing the AOV calculation:
+    </p>
+    <ul>
+      <li>At least one store was selling sneakers for $25,725 per unit, far above the typical price range. This pulled the mean up significantly</li>
+      <li>Two specific stores, shop IDs 42 and 78, had order amounts that were dramatically higher than every other store. A scatter plot of order amounts by shop ID made this immediately visible</li>
+    </ul>
+
+    <p>
+      I created a calculated column for price per unit by dividing order amount by total items. The average price per unit came out to $387, but the range was $90 to $25,725. That range tells the real story.
+    </p>
+
+    <h3>The Better Metric</h3>
+    <p>
+      Removing outliers was considered but rejected because it would exclude shops 42 and 78 entirely, which represent real business activity. Instead, the median is the better measure of central tendency here because it is not influenced by extreme values.
+    </p>
+
+    <div class="answer-box">
+      <p><strong>Answer:</strong> The median order value is <strong>$284.00</strong>, which is a far more accurate representation of a typical order than the $3,145.13 mean.</p>
+    </div>
+
+    <h2>Part 2: SQL Questions</h2>
+
+    <p>
+      The second part of the challenge used a retail database to answer three business questions using SQL joins and aggregations.
+    </p>
+
+    <h3>a) How many orders were shipped by Speedy Express?</h3>
+    <div class="code-block">
+      SELECT ShipperName, COUNT(O.ShipperID) AS Orders_Shipped<br>
+      FROM Orders o<br>
+      INNER JOIN Shippers s ON o.ShipperID = s.ShipperID<br>
+      WHERE ShipperName = 'Speedy Express'<br>
+      GROUP BY o.ShipperID
+    </div>
+    <div class="answer-box">
+      <p><strong>Answer:</strong> Speedy Express shipped <strong>54 orders</strong> in total.</p>
+    </div>
+
+    <h3>b) What is the last name of the employee with the most orders?</h3>
+    <div class="code-block">
+      SELECT o.EmployeeID, e.LastName, COUNT(o.OrderID) AS Total_Orders<br>
+      FROM Orders o<br>
+      INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID<br>
+      GROUP BY o.EmployeeID<br>
+      ORDER BY Total_Orders DESC<br>
+      LIMIT 1
+    </div>
+    <div class="answer-box">
+      <p><strong>Answer:</strong> The employee with the most orders is <strong>Peacock</strong> with 40 orders.</p>
+    </div>
+
+    <h3>c) What product was ordered the most by customers in Germany?</h3>
+    <div class="code-block">
+      SELECT SUM(od.Quantity) AS Total_Orders, p.ProductName<br>
+      FROM OrderDetails od<br>
+      LEFT JOIN Products p ON p.ProductID = od.ProductID<br>
+      LEFT JOIN Orders o ON o.OrderID = od.OrderID<br>
+      LEFT JOIN Customers c ON c.CustomerID = o.CustomerID<br>
+      WHERE c.Country = 'Germany'<br>
+      GROUP BY p.ProductName<br>
+      ORDER BY Total_Orders DESC<br>
+      LIMIT 1
+    </div>
+    <div class="answer-box">
+      <p><strong>Answer:</strong> The most ordered product by customers in Germany is <strong>Boston Crab Meat</strong>.</p>
+    </div>
+
+    <hr class="divider">
+
+    <a href="https://github.com/rachelokoduwa/Shopify_Internship"
+       class="github-btn" target="_blank">
+      View on GitHub
+    </a>
+
+  </div>
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
