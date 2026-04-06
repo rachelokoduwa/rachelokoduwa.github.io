@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Smartwatch Analysis | Rachel Okoduwa</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet'>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      background: #fff;
+    }
+    .blog-header {
+      background: #f8f8f8;
+      padding: 60px 0 40px 0;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    .blog-header h1 {
+      font-family: 'Roboto Slab', serif;
+      font-size: 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+    }
+    .blog-header .meta {
+      color: #888;
+      font-size: 14px;
+    }
+    .blog-content {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      line-height: 1.9;
+      font-size: 16px;
+      color: #444;
+    }
+    .blog-content h2 {
+      font-family: 'Roboto Slab', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .blog-content p {
+      margin-bottom: 20px;
+    }
+    .blog-content ul {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    .blog-content ul li {
+      margin-bottom: 10px;
+    }
+    .tools-used {
+      background: #f8f8f8;
+      padding: 20px 25px;
+      margin: 30px 0;
+      border-left: 4px solid #333;
+    }
+    .tools-used p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .github-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 14px 30px;
+      background-color: #333333;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .github-btn:hover {
+      background-color: #555;
+      color: #fff;
+      text-decoration: none;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      font-size: 13px;
+      color: #888;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .back-link:hover {
+      color: #333;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blog-header">
+    <div class="container">
+      <p class="meta">02/25/2022 &nbsp;&bull;&nbsp; Python &nbsp;&bull;&nbsp; Exploratory Data Analysis</p>
+      <h1>Smartwatch Analysis</h1>
+      <p class="meta">What insights can Fitbit use to stay relevant in the smartwatch industry?</p>
+    </div>
+  </div>
+
+  <div class="blog-content">
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
+
+    <p>
+      This was my first data analysis project and I wanted to start with something that felt relevant and interesting to me. Fitbit has been around for a long time but the smartwatch market has gotten incredibly competitive with Apple, Samsung and Garmin all fighting for the same users. I wanted to look at real user data and ask a simple question: what does Fitbit actually know about how their users behave, and what could they do with that information?
+    </p>
+
+    <h2>The Data</h2>
+    <p>
+      The dataset came from a public Fitbit dataset that captured activity, sleep, steps, calories and heart rate data from 30 consenting users over a period of time. It was messy in places which made the cleaning process a good learning experience for me as someone just getting started with Python.
+    </p>
+
+    <div class="tools-used">
+      <p><strong>Tools used:</strong> Python, Pandas, Matplotlib, Seaborn</p>
+    </div>
+
+    <h2>What I Found</h2>
+    <p>
+      After cleaning and exploring the data, here are the key insights I pulled out:
+    </p>
+
+    <ul>
+      <li>On average, users take about 8,541 steps a day and walk roughly 6.04km. That is below the commonly recommended 10,000 steps which tells Fitbit there is a clear nudge opportunity here.</li>
+      <li>Users tend to start logging their activities from mid-week. Monday has the lowest logging activity which suggests people are either too busy or just not in the habit at the start of the week.</li>
+      <li>73.2% of all recorded activity is sedentary. That is a significant finding because it means the majority of Fitbit users are largely inactive despite wearing a fitness device.</li>
+      <li>The most active days are Mondays, Tuesdays and Fridays which is interesting given that Monday has the lowest logging rate. People may be active on Mondays but not logging it.</li>
+      <li>Users sleep an average of 6.84 hours per night, which is below the recommended 7 to 8 hours. Sunday is the best sleep day at 7.5 hours on average.</li>
+      <li>The strongest correlation in the data was between total active minutes and sedentary minutes at 0.85, and between calories burned and very active minutes at 0.61.</li>
+      <li>The strongest relationship found was between sedentary minutes and total minutes asleep, with an R-squared of 0.36, suggesting that more sedentary time is weakly associated with less sleep.</li>
+    </ul>
+
+    <h2>What This Means for Fitbit</h2>
+    <p>
+      The data paints a picture of users who are not as active as they probably think they are. Most of their time is sedentary, they are not sleeping enough, and they are inconsistent about logging. For Fitbit, this is actually an opportunity. Better nudges, smarter reminders, and features that reward consistency could meaningfully improve user engagement and health outcomes.
+    </p>
+
+    <p>
+      This was my first project so the analysis is straightforward but it taught me a lot about working with real, messy data and thinking about what the numbers actually mean beyond just the statistics.
+    </p>
+
+    <hr class="divider">
+
+    <a href="https://github.com/rachelokoduwa/Smart-Watch-Analysis" 
+       class="github-btn" target="_blank">
+      View on GitHub
+    </a>
+
+  </div>
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
