@@ -927,12 +927,6 @@ ul.portfolio-image li .desc{
   text-align: center;
   border-top: 1px solid #dedede;
 }
-
-.btn-read-more:hover {
-  color: #888888;
-  text-decoration: none;
-}
-
 .btn-read-more:hover {
   background-color: #555555;
   color: #ffffff;
