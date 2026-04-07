@@ -914,17 +914,23 @@ ul.portfolio-image li .desc{
   flex: 1;
 }
 .btn-read-more {
-  display: inline-block;
+  display: block;
   margin-top: auto;
-  padding: 10px 20px;
-  background-color: #333333;
-  color: #ffffff;
+  padding: 10px 0;
+  background-color: transparent;
+  color: #333333;
   text-decoration: none;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  align-self: flex-start;
+  text-align: center;
+  border-top: 1px solid #dedede;
+}
+
+.btn-read-more:hover {
+  color: #888888;
+  text-decoration: none;
 }
 
 .btn-read-more:hover {
