@@ -23,6 +23,12 @@
     .tools-used p { margin: 0; font-size: 14px; }
     .finding-box { background: #f8f8f8; padding: 20px 25px; margin: 20px 0; border-left: 4px solid #333; }
     .finding-box p { margin: 0; font-size: 15px; }
+    .limitation-box { background: #fff8f0; padding: 20px 25px; margin: 20px 0; border-left: 4px solid #e0a030; }
+    .limitation-box p { margin: 0; font-size: 15px; }
+    table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 14px; }
+    th { background: #333; color: #fff; padding: 12px 15px; text-align: left; font-weight: 700; letter-spacing: 0.05em; }
+    td { padding: 10px 15px; border-bottom: 1px solid #eee; vertical-align: top; }
+    tr:nth-child(even) { background: #f8f8f8; }
     .github-btn { display: inline-block; margin-top: 10px; padding: 14px 30px; background-color: #333333; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
     .github-btn:hover { background-color: #555; color: #fff; text-decoration: none; }
     .back-link { display: inline-block; margin-bottom: 40px; font-size: 13px; color: #888; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -54,16 +60,55 @@
 
     <div class="tools-used">
       <p><strong>Tools used:</strong> Python (Pandas, Matplotlib, Seaborn), FRED API, GitHub Codespaces</p>
-      <p style="margin-top: 8px;"><strong>Data source:</strong> Federal Reserve Bank of St. Louis (FRED) — wage series by sector and CPI inflation data</p>
+      <p style="margin-top: 8px;"><strong>Data source:</strong> Federal Reserve Bank of St. Louis (FRED) — sector level average hourly wages and CPI inflation data</p>
     </div>
 
     <h2>The Data</h2>
     <p>
-      I pulled 10 years of data from the Federal Reserve's free public API covering average hourly wages across five sectors and the Consumer Price Index for inflation. The sectors covered were Tech and Information, Professional Services, Healthcare, Retail, and All Workers Average.
+      I pulled 10 years of data from the Federal Reserve's free public API covering average hourly wages across five sectors and the Consumer Price Index for inflation. It is important to note that this data represents sector level monthly averages, not individual worker wages. That distinction matters and I will come back to it in the limitations section.
     </p>
+
     <p>
-      I initially looked at the full 2015 to 2024 period but then narrowed the focus to September 2020 onwards because that is when the real tech hiring boom began. Interestingly the overall conclusion stayed the same whether you look at 10 years or just the post-COVID period, which was itself a surprising finding.
+      Here is exactly what each FRED series measures:
     </p>
+
+    <table>
+      <tr>
+        <th>FRED Code</th>
+        <th>What It Measures</th>
+        <th>What It Includes</th>
+      </tr>
+      <tr>
+        <td>CPIAUCSL</td>
+        <td>Consumer Price Index (Inflation)</td>
+        <td>Weighted average price of a basket of goods and services for urban consumers including food, housing, transport, healthcare and clothing</td>
+      </tr>
+      <tr>
+        <td>CES5500000003</td>
+        <td>Tech and Information Wages</td>
+        <td>Average hourly earnings for workers in the Information sector including software, telecommunications, data processing, publishing and broadcasting</td>
+      </tr>
+      <tr>
+        <td>CES6000000003</td>
+        <td>Professional Services Wages</td>
+        <td>Average hourly earnings across Professional and Business Services including legal, accounting, management consulting, engineering, architecture, advertising and scientific research</td>
+      </tr>
+      <tr>
+        <td>CES6500000003</td>
+        <td>Healthcare Wages</td>
+        <td>Average hourly earnings in Education and Health Services including hospitals, clinics, nursing homes, social assistance and educational institutions</td>
+      </tr>
+      <tr>
+        <td>CES4200000003</td>
+        <td>Retail Wages</td>
+        <td>Average hourly earnings in Retail Trade including grocery stores, clothing retailers, electronics stores, car dealerships and general merchandise</td>
+      </tr>
+      <tr>
+        <td>CES0500000003</td>
+        <td>All Workers Average</td>
+        <td>Average hourly earnings across all private sector workers in the US economy</td>
+      </tr>
+    </table>
 
     <h2>What I Found</h2>
 
@@ -99,12 +144,43 @@
     </ul>
 
     <p>
-      The gap between tech and retail workers has grown to <strong>$21.60 per hour</strong> by 2024. Even when the percentage growth rates look similar, a 1% loss on $46/hr hurts a lot less than a 5% loss on $25/hr. The inequality is not just about growth rates, it is baked into the absolute dollar difference.
+      The gap between tech and retail workers has grown to <strong>$21.60 per hour</strong> by 2024. Even when percentage growth rates look similar, a 1% loss on $46/hr hurts a lot less than a 5% loss on $25/hr. The inequality is not just about growth rates, it is baked into the absolute dollar difference.
     </p>
 
     <h2>A Note on the Popular Narrative</h2>
     <p>
       The headlines tend to focus on senior engineers at Google and Meta making $300K to $500K in total compensation. But those people are a tiny fraction of the tech workforce. The FRED data captures the average tech worker, the IT support person, the junior developer, the data analyst at a software company. Their story is much closer to everyone else's than the headlines suggest.
+    </p>
+
+    <h2>Limitations and Things to Consider</h2>
+
+    <div class="limitation-box">
+      <p><strong>This data has real limitations that are worth understanding before drawing conclusions.</strong></p>
+    </div>
+
+    <p><strong>1. Sector level averages, not individual wages</strong></p>
+    <p>
+      The FRED data represents monthly averages across entire sectors. It does not show the distribution of wages within each sector. A sector average can look stable even when the gap between the highest and lowest earners within that sector is growing significantly.
+    </p>
+
+    <p><strong>2. The Professional Services result needs context</strong></p>
+    <p>
+      Professional Services barely beat inflation at +22.5% vs +22.2%. But this category includes lawyers, management consultants and engineers who are high billing rate professionals. Their wages likely pull the sector average up considerably. The experience of an average accountant or junior consultant within this category may look very different from the sector average suggests.
+    </p>
+
+    <p><strong>3. Overemployment is not accounted for</strong></p>
+    <p>
+      Post-COVID remote work enabled a phenomenon where some tech workers quietly hold two full time jobs simultaneously, sometimes called overemployment. If a portion of tech workers are earning two salaries, the FRED data would not capture that. The real individual income picture for some tech workers may be significantly higher than these sector averages show.
+    </p>
+
+    <p><strong>4. Total compensation vs hourly wages</strong></p>
+    <p>
+      This analysis looks at hourly wages only. Tech workers in particular often receive significant additional compensation through stock options, RSUs, and bonuses that are not captured in hourly wage data. For senior tech workers especially, total compensation can be multiples of base salary.
+    </p>
+
+    <p><strong>5. Geography matters</strong></p>
+    <p>
+      These are national averages. A tech worker in San Francisco or New York faces very different cost of living pressures than one in Edmonton or Austin. Geographic wage differences within sectors are significant and national averages smooth over that reality.
     </p>
 
     <h2>Visualizations</h2>
