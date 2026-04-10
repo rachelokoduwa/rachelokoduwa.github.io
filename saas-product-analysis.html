@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SaaS Product Analysis | Rachel Okoduwa</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet'>
+  <style>
+    body { font-family: 'Roboto', sans-serif; color: #333; background: #fff; }
+    .blog-header { background: #f8f8f8; padding: 60px 0 40px 0; text-align: center; border-bottom: 1px solid #eee; }
+    .blog-header h1 { font-family: 'Roboto Slab', serif; font-size: 32px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 15px; }
+    .blog-header .meta { color: #888; font-size: 14px; }
+    .blog-content { max-width: 800px; margin: 60px auto; padding: 0 20px; line-height: 1.9; font-size: 16px; color: #444; }
+    .blog-content h2 { font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 700; margin-top: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .blog-content p { margin-bottom: 20px; }
+    .blog-content ul { margin-bottom: 20px; padding-left: 20px; }
+    .blog-content ul li { margin-bottom: 10px; }
+    .tools-used { background: #f8f8f8; padding: 20px 25px; margin: 30px 0; border-left: 4px solid #333; }
+    .tools-used p { margin: 0; font-size: 14px; }
+    .finding-box { background: #f8f8f8; padding: 20px 25px; margin: 20px 0; border-left: 4px solid #333; }
+    .finding-box p { margin: 0; font-size: 15px; }
+    .limitation-box { background: #fff8f0; padding: 20px 25px; margin: 20px 0; border-left: 4px solid #e0a030; }
+    .limitation-box p { margin: 0; font-size: 15px; }
+    .github-btn { display: inline-block; margin-top: 10px; padding: 14px 30px; background-color: #333333; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .github-btn:hover { background-color: #555; color: #fff; text-decoration: none; }
+    .back-link { display: inline-block; margin-bottom: 40px; font-size: 13px; color: #888; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; }
+    .back-link:hover { color: #333; }
+    .divider { border: none; border-top: 1px solid #eee; margin: 40px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="blog-header">
+    <div class="container">
+      <p class="meta">04/09/2026 &nbsp;&bull;&nbsp; Python &nbsp;&bull;&nbsp; SQL &nbsp;&bull;&nbsp; PostgreSQL &nbsp;&bull;&nbsp; Product Analytics</p>
+      <h1>SaaS Product Analysis</h1>
+      <p class="meta">What actually happens to a business after a new feature ships?</p>
+    </div>
+  </div>
+
+  <div class="blog-content">
+    <a class="back-link" href="index.html">← Back to Portfolio</a>
+
+    <p>
+      For this project I put myself in the role of a product analyst at a SaaS company that had just shipped a new feature. My task was to measure what actually happened to the business after that release. Not just whether revenue went up but whether the feature changed how users behaved, how satisfied they were, whether they came back, and whether the differences were real or just noise.
+    </p>
+
+    <p>
+      I used the Olist Brazilian E-Commerce dataset from Kaggle because it is real data from a real company. The story I tell with it is framed around a seller onboarding feature that Olist launched in July 2017, which is visible as a clear inflection point in the data.
+    </p>
+
+    <div class="tools-used">
+      <p><strong>Tools used:</strong> Python (Pandas, Matplotlib, Seaborn, SciPy), PostgreSQL, SQLAlchemy, GitHub Codespaces, Jupyter Notebooks</p>
+      <p style="margin-top: 8px;"><strong>Data source:</strong> Olist Brazilian E-Commerce Dataset (Kaggle) — 9 tables, ~100K orders</p>
+    </div>
+
+    <h2>The Five Analyses</h2>
+
+    <p><strong>1. MRR (Monthly Recurring Revenue)</strong></p>
+    <p>
+      Revenue grew roughly 6x in the year following the feature launch, from around R$127K in January 2017 to over R$1.1M by November 2017. Order volumes nearly doubled in the second half of 2017 compared to the first. The business was clearly growing fast.
+    </p>
+
+    <p><strong>2. Product Release Impact</strong></p>
+    <p>
+      This is where things got interesting. Despite the explosive growth in orders, average order value stayed almost identical before and after the launch at R$152. Delivery times barely changed. But review scores dropped, from 4.20 before the launch to 4.15 after. Small in absolute terms but as the A/B test showed, that difference was statistically real.
+    </p>
+
+    <p><strong>3. A/B Testing</strong></p>
+    <p>
+      I used a two-sample t-test to determine whether the differences were meaningful or just random variation. The order value difference was not significant with a p-value of 0.87, meaning there is an 87% chance that difference happened by chance. The review score difference was highly significant with a p-value of 0.000001. The drop in satisfaction was real.
+    </p>
+
+    <div class="finding-box">
+      <p><strong>Key finding:</strong> The feature brought in far more customers but those customers were measurably less satisfied. More sellers came on board after the new onboarding process but not all of them maintained the same quality of service.</p>
+    </div>
+
+    <p>
+      This got me thinking about something beyond the data. Review scores drop not just because service quality drops but because of how reviews work in practice. Most customers only leave a review when something was exceptionally good or genuinely terrible. The large number of neutral or mildly positive experiences often go unrecorded. When you scale a platform rapidly and bring on many new sellers, you introduce more variance in the experience and the reviews tend to reflect the extremes more than they did before. That is worth keeping in mind when interpreting any review-based metric.
+    </p>
+
+    <p><strong>4. Cohort Analysis</strong></p>
+    <p>
+      I grouped customers by their first purchase month and tracked repeat purchase rates. Pre-launch cohorts showed repeat rates between 4% and 7%. Post-launch cohorts appeared to decline toward zero but this was a time bias issue, not a real retention problem. Customers who joined in late 2018 simply had not had enough time to return before the dataset ended. This is called right-censoring and it is a classic trap in cohort analysis.
+    </p>
+    <p>
+      There was also a data quality issue worth flagging. Olist assigns a unique customer ID to every order rather than every person. Running the cohort analysis with the wrong ID field produced zero repeat customers across every cohort, which looked wrong immediately. Switching to the customer unique ID field revealed that 3,345 customers had placed more than one order. Proper sanity checks at the start of any analysis would have caught this earlier.
+    </p>
+
+    <p><strong>5. Churn Analysis</strong></p>
+    <p>
+      Defining churn for an e-commerce marketplace is different from a subscription business. I defined a churned customer as anyone who had not placed an order in the last six months of the dataset. Overall churn was 65.9%. Active customers spent slightly more on average at R$161.73 compared to R$155.12 for churned customers.
+    </p>
+
+    <h2>What the Data Really Says</h2>
+    <p>
+      The surface story is straightforward: the feature worked, revenue grew, user numbers exploded. But the deeper story is more nuanced. Growth on the surface does not always mean everything is going well underneath. Delivery times that creep up slightly, review scores that tick down, repeat rates that flatten out. These are the kinds of signals that get lost when a team is focused on the top line number going up.
+    </p>
+    <p>
+      Raw data can tell us more than we see at first glance. The job of a good analyst is not just to report what happened but to ask what it means for the business and what decisions it should inform.
+    </p>
+
+    <h2>Limitations</h2>
+
+    <div class="limitation-box">
+      <p><strong>This is not a true randomized A/B test.</strong> We are comparing two time periods, not two randomly assigned groups. Other things changed between early 2017 and late 2017 including seasonality, marketing, and general business maturity. The statistical tests confirm the differences are real but they cannot confirm the feature release was the only cause.</p>
+    </div>
+
+    <p>
+      The time bias in the cohort analysis also means the repeat rate numbers for recent cohorts are not comparable to older ones. And the churn definition of six months is a judgment call. A different threshold would produce different numbers.
+    </p>
+
+    <hr class="divider">
+
+    <a href="https://github.com/rachelokoduwa/saas-product-analysis"
+       class="github-btn" target="_blank">
+      View on GitHub
+    </a>
+
+  </div>
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
