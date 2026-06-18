@@ -101,3 +101,16 @@
 	  padding: 0 20px 0 60px; 
 	}
 }
+/* project grid responsiveness */
+@media screen and (max-width: 600px){
+  .grid { grid-template-columns: 1fr; }
+}
+@media screen and (min-width: 601px) and (max-width: 900px){
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* show full project cover without cropping at any card width */
+.grid-item .wrap-article img{
+  height: auto;
+  aspect-ratio: 1000 / 600;
+}
