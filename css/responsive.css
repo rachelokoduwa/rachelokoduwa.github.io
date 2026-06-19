@@ -197,3 +197,6 @@
 .hero-links a:not(:last-child)::after{ content:"·"; position:absolute; right:-15px; color:#C2C8CE; }
 .hero-links a:hover{ color:#0E8388; }
 @media screen and (max-width: 900px){ .hero-links{ justify-content:center; } }
+/* tighten footer */
+.footer-bottom{ padding: 34px 0; }
+.footer-bottom img{ width: 120px; height: auto; }
