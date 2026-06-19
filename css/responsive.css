@@ -124,3 +124,10 @@
   box-shadow: 0 18px 50px rgba(14,131,136,0.15);
   padding: 55px 65px;
 }
+/* about: keep photo and blurb together on mobile */
+@media screen and (max-width: 768px){
+  #about{ min-height: 0; }
+  .bg-about{ min-height: 0 !important; height: 300px; }
+  .wrap-about{ min-height: 0 !important; padding: 26px 24px 34px; }
+  .wrap-about .w-content{ position: static; transform: none; top: auto; left: auto; right: auto; width: 100%; }
+}
