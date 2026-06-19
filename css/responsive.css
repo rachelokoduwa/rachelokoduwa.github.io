@@ -131,3 +131,29 @@
   .wrap-about{ min-height: 0 !important; padding: 26px 24px 34px; }
   .wrap-about .w-content{ position: static; transform: none; top: auto; left: auto; right: auto; width: 100%; }
 }
+/* ===== combined landing (hero) ===== */
+#home{ display:flex; align-items:center; min-height:100vh; }
+#home .container{ width:100%; }
+.hero-split{ display:flex; align-items:center; gap:64px; }
+.hero-text{ flex:1 1 54%; }
+.hero-photo{ flex:1 1 46%; position:relative; display:flex; justify-content:center; }
+.hero-eyebrow{ color:#0E8388; font-weight:700; letter-spacing:5px; font-size:14px; text-transform:uppercase; margin:0 0 16px; }
+.hero-title{ font-family:'Roboto Slab', Georgia, serif; color:#1E2733; font-weight:700; font-size:52px; line-height:1.12; margin:0 0 20px; }
+.hero-lead{ color:#46525F; font-size:18px; line-height:1.7; font-weight:300; max-width:520px; margin:0 0 34px; }
+.hero-cta{ display:flex; gap:16px; flex-wrap:wrap; }
+.hero-cta a{ text-decoration:none; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:15px 30px; border-radius:4px; transition:background .2s,color .2s; display:inline-block; }
+.btn-primary{ background:#0E8388; color:#fff; }
+.btn-primary:hover{ background:#0b6d71; color:#fff; }
+.btn-ghost{ border:2px solid #0E8388; color:#0E8388; padding:13px 28px; }
+.btn-ghost:hover{ background:#0E8388; color:#fff; }
+.hero-photo img{ width:100%; max-width:350px; border-radius:10px; display:block; border-top:4px solid #0E8388; box-shadow:0 26px 60px rgba(14,131,136,0.22); position:relative; z-index:2; }
+.hero-photo-accent{ position:absolute; width:300px; height:300px; border-radius:14px; background:#0E8388; opacity:0.12; top:-20px; right:52px; z-index:1; }
+@media screen and (max-width: 900px){
+  #home{ min-height:auto; padding:110px 0 70px; }
+  .hero-split{ flex-direction:column; text-align:center; gap:40px; }
+  .hero-lead{ margin-left:auto; margin-right:auto; font-size:16px; }
+  .hero-cta{ justify-content:center; }
+  .hero-title{ font-size:38px; }
+  .hero-photo img{ max-width:270px; }
+  .hero-photo-accent{ width:240px; height:240px; right:auto; left:50%; transform:translateX(-40%); top:-16px; }
+}
